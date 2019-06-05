@@ -1,0 +1,8 @@
+{
+	"name": "Zendesk - Intern Coding Challenge 2019",
+	"zendesk": {
+		"url": "https://bacdam91.zendesk.com/api/v2/tickets.json",
+		"username": "ZENDESK_USERNAME",
+		"password": "ZENDESK_PASSWORD"
+	}
+}

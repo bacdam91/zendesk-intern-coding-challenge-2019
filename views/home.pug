@@ -1,0 +1,21 @@
+include 
+
+doctype html
+html 
+    head 
+        title= title
+        link(rel="stylesheet", href="css/main.css")
+    body 
+        main
+            div
+                ul 
+                    for ticket in tickets
+                        li 
+                            div.ticket-item 
+                                div.ticket-id #{ticket.id}
+                                div.ticket-subject #{ticket.subject}
+                                div.ticket-description #{ticket.description}
+                                div.ticket-priority #{ticket.priority}
+                                div.ticket.status #{ticket.status}
+                                div.ticket.created_at #{ticket.created_at}
+                                div.ticket.updated_at #{ticket.updated_at}

@@ -1,0 +1,22 @@
+{
+	"name": "zendesk",
+	"version": "1.0.0",
+	"description": "Intern Coding Challenge 2019",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index",
+		"dev": "nodemon index"
+	},
+	"author": "Bac Trach Dam",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^1.19.1"
+	},
+	"dependencies": {
+		"config": "^3.1.0",
+		"express": "^4.17.1",
+		"pug": "^2.0.3",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.4"
+	}
+}

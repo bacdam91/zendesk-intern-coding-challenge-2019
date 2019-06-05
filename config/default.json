@@ -1,0 +1,9 @@
+{
+	"application": {
+		"name": "Zendesk - Intern Coding Challenge 2019",
+		"ticketsPerPage": 25
+	},
+	"zendesk": {
+		"url": "https://bacdam91.zendesk.com/api/v2/tickets.json"
+	}
+}
