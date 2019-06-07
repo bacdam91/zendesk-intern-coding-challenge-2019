@@ -1,21 +1,16 @@
-include 
+
 
 doctype html
 html 
     head 
         title= title
         link(rel="stylesheet", href="css/main.css")
+        script(src="https://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
     body 
+        nav.top-nav
         main
-            div
-                ul 
-                    for ticket in tickets
-                        li 
-                            div.ticket-item 
-                                div.ticket-id #{ticket.id}
-                                div.ticket-subject #{ticket.subject}
-                                div.ticket-description #{ticket.description}
-                                div.ticket-priority #{ticket.priority}
-                                div.ticket.status #{ticket.status}
-                                div.ticket.created_at #{ticket.created_at}
-                                div.ticket.updated_at #{ticket.updated_at}
+            include ./includes/side_toolbar.pug
+            include ./includes/ticket_panel.pug
+            include ./includes/ticket_details_panel.pug
+            include ./includes/ticket_viewer.pug
+        script(src="js/main.js")

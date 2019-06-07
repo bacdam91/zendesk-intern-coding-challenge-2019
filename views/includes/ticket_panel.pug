@@ -1,0 +1,13 @@
+include ../mixins/ticket_item.pug
+
+.ticket-panel
+    .ticket-panel__header
+    .ticket-container
+        if err && tickets === undefined
+            .error= err
+        else
+            for ticket in tickets
+                +ticketItem(ticket)
+    .ticket-panel__footer
+        button.nav_btn.prev_btn Previous
+        button.nav_btn.next_btn Next

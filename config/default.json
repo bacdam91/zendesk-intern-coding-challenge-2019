@@ -4,6 +4,14 @@
 		"ticketsPerPage": 25
 	},
 	"zendesk": {
-		"url": "https://bacdam91.zendesk.com/api/v2/tickets.json"
+		"url": "https://bacdam91.zendesk.com/api/v2/tickets.json",
+		"auditURL": "https://bacdam91.zendesk.com/api/v2/ticket_audits.json?limit=1",
+		"ticket": {
+			"url": "https://bacdam91.zendesk.com/api/v2/tickets/"
+		},
+		"users": {
+			"url": "https://bacdam91.zendesk.com/api/v2/users/me.json",
+			"openTicketAssigned": "https://bacdam91.zendesk.com/api/v2/users/me.json?include=open_ticket_count"
+		}
 	}
 }
