@@ -3,7 +3,7 @@ include ../mixins/ticket_item.pug
 .ticket-panel
     .ticket-panel__header
     .ticket-container
-        if err && tickets === undefined
+        if err || tickets === undefined
             .error= err
         else
             for ticket in tickets

@@ -1,8 +1,8 @@
 const BASE_URL = window.location.href;
 
 $(document).ready(function() {
-	let nextNavBtn = $(".next_btn");
-	let prevNavBtn = $(".prev_btn");
+	let nextNavBtn = $(".btn-nav__next");
+	let prevNavBtn = $(".btn-nav__prev");
 
 	//getTickets();
 

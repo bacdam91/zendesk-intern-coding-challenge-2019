@@ -15,7 +15,7 @@
 
 ## About
 
-## Design Decisions
+## Design and Implementation Decisions
 
 1. Browser-based UI
     - Use PUG as a view engine
@@ -30,3 +30,17 @@
     - status:
     - created_at:
     - updated_at:
+    - requester_id:
+    - tags:
+    - channel:
+    - type:
+4. Pagination method - page-based pagination
+    - The Zendesk API (the API) offers 3 different paginated endpoints for Tickets. These include:
+        - Basic pagination
+        - Ticket Audit (TA)
+        - Incremental Ticket Exports (ITE)
+    - After much research into pagination and reading of the API, it seems the most appropriate pagination endpoint to use for this challenge is the basic pagination which is a page-based method.
+    - The reasons against using TA and ITE are as followed:
+        - With ITE, there seems to be no control of the ticket count. Each request returns up to 1000 results with the last page returns less than that limit. Loading such enormous amount of tickets can slow down the response time and make the application seems unresponsive, reducing the user experience. Moreover, ITE returns changes to tickets rather than all tickets. This is undesirable for the requirement as the Ticket Viewer needs to show all available tickets.
+    - Although there are limitations to this method (as outlined in the section "Limitations of API pagination"), I have implemented the suggested strategy of ordering the result from old to newest to minimise inaccuracies.
+5. Error and exception handling

@@ -1,16 +1,83 @@
-
+- var n = 1;
+- var t = 1;
 
 doctype html
 html 
     head 
-        title= title
-        link(rel="stylesheet", href="css/main.css")
+        title
+        link(rel="stylesheet", href="css/main.css", type="text/css")
         script(src="https://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
     body 
-        nav.top-nav
-        main
-            include ./includes/side_toolbar.pug
-            include ./includes/ticket_panel.pug
-            include ./includes/ticket_details_panel.pug
-            include ./includes/ticket_viewer.pug
+        nav 
+        main 
+            .container
+                .ui-container 
+                    .tickets-list-container 
+                        .filter-container 
+                            .btn-container 
+                                a.page-toggle-btn.btn-nav__prev Prev
+                                a.page-toggle-btn.btn-nav__next Next
+                        .tickets-list
+                            while n < 25
+                                .ticket-item 
+                                    .priority-indicator.priority__urgent
+                                    .ticket-id-container
+                                        .ticket-id= n
+                                    span.vertical-rule
+                                    .ticket-subject-container
+                                        .ticket-subject This is ticket ##{n++}
+                                    .ticket-date-container
+                                        .ticket-date 06/06/2019
+                    .ticket-viewer-container
+                        .ticket-viewer 
+                            .ticket-toolbar
+                                .ticket-panels-container 
+                                    .ticket-panel
+                                        .ticket-panel__header
+                                            h4 TICKET DETAILS
+                                        .ticket-panel__body
+                                            .ticket-panel-field 
+                                                strong ID: 
+                                                span 
+                                            .ticket-panel-field 
+                                                strong Status:
+                                                span 
+                                            .ticket-panel-field 
+                                                strong Priority:
+                                                span 
+                                            .ticket-panel-field 
+                                                strong Type: 
+                                                span 
+                                    .ticket-panel
+                                        .ticket-panel__header
+                                            h4 TAGS
+                                        .ticket-panel__body.tag-container
+                                            span.tag-item IT 
+                                            span.tag-item Computer
+                                            span.tag-item HD
+                                            span.tag-item SSD
+                                            span.tag-item Replacement
+                                            span.tag-item Dell
+                                .ticket-btn-container 
+                                    button.close-ticket-btn Close Ticket
+                            .ticket-main-view
+                                .ticket-main__header.ticket-main-container
+                                    div.wrapper 
+                                        h2.ticket-main__subject Subject: 
+                                            span This is a new ticket
+                                        .ticket-main__requester Requested by: 
+                                            span Bac Trach Dam 
+                                        .ticket-main__created-at 
+                                            em Created at: 
+                                                span 06/06/2019
+                                .ticket-main__body.ticket-main-container
+                                    div.wrapper
+                                        .ticket-description-container 
+                                            .ticket-description 
+                                                p Computers are cool!
+                                            .ticket-updated-at
+                                                em 
+                                                    span Updated at: 
+                                                    span 10/06/2019
+                                
         script(src="js/main.js")

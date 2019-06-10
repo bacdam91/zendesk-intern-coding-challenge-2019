@@ -1,7 +1,6 @@
 {
 	"application": {
-		"name": "Zendesk - Intern Coding Challenge 2019",
-		"ticketsPerPage": 25
+		"name": "Zendesk - Intern Coding Challenge 2019"
 	},
 	"zendesk": {
 		"url": "https://bacdam91.zendesk.com/api/v2/tickets.json",
@@ -13,5 +12,9 @@
 			"url": "https://bacdam91.zendesk.com/api/v2/users/me.json",
 			"openTicketAssigned": "https://bacdam91.zendesk.com/api/v2/users/me.json?include=open_ticket_count"
 		}
+	},
+	"errorMessages": {
+		"badRequest": "Sorry cannot process your request. Please try again with valid inputs.",
+		"default": "Something has gone wrong. Please contact your system administrator. Sorry for any inconvenience."
 	}
 }
