@@ -32,10 +32,10 @@ class TicketRequest {
 
 	getQueryParams(req) {
 		return {
-			page: parseInt(req.body.page),
-			per_page: parseInt(req.body.perPage),
-			sort_by: req.body.sortBy,
-			sort_order: req.body.sortOrder
+			page: parseInt(req.query.page),
+			per_page: parseInt(req.query.per_page),
+			sort_by: req.query.sort_by,
+			sort_order: req.query.sort_order
 		};
 	}
 
