@@ -8,6 +8,7 @@ const ticketRequest = new TicketRequest();
 
 route.get("/tickets", async (req, res) => {
 	let queryParams = ticketRequest.getQueryParams(req);
+	//console.log(queryParams);
 	const { error } = ticketRequest.validateRequestParams(queryParams);
 	if (error) {
 		throw error;
@@ -19,7 +20,20 @@ route.get("/tickets", async (req, res) => {
 });
 
 route.get("/", async (req, res) => {
-	res.render("home");
+	let sortOptions = {
+		created_at: "Created at",
+		updated_at: "Updated at",
+		assignee: "Assignee",
+		"assignee.name": "Assignee name",
+		group: "Group",
+		id: "ID",
+		locale: "Locale",
+		requester: "Requester",
+		"requester.name": "Requester name",
+		status: "Status",
+		subject: "Subject"
+	};
+	res.render("home", { sortOptions: sortOptions });
 });
 
 route.get("/ticket/", async (req, res) => {

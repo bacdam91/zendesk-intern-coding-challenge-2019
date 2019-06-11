@@ -1,0 +1,13 @@
+ul.tickets-list
+    li.ticket-item(ng-repeat="tix in tickets", ng-click="getTicketInfo()")
+        .priority-indicator(ng-class="{'priority__urgent': tix.priority === 'urgent', 'priority__high': tix.priority === 'high', 'priority__normal': tix.priority === 'normal', 'priority__low': tix.priority === 'low'}")
+        .ticket-id-container
+            .ticket-id {{tix.id}}
+        span.vertical-rule
+        .ticket-subject-container
+            .ticket-subject 
+                span.ticket-status(ng-class="{'ticket-status__new': tix.status === 'new', 'ticket-status__open': tix.status === 'open', 'ticket-status__pending': tix.status === 'pending', 'ticket-status__hold': tix.status === 'hold', 'ticket-status__solved': tix.status === 'solved', 'ticket-status__closed': tix.status === 'closed'}")
+                span {{tix.subject}}
+        .ticket-date-container
+            .ticket-date {{tix.created_at | date : "dd/MM/yy"}}
+            .ticket-created-at {{tix.created_at | date : "hh:mm a"}}

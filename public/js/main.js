@@ -5,6 +5,9 @@ app.controller("ticketViewerController", [
 	"$scope",
 	"$http",
 	function($scope, $http) {
+		$scope.sortBy = "created_at";
+		$scope.sortOrder = "desc";
+
 		getTicketPage($scope, $http, currentPage);
 		$scope.getPrevPage = function() {
 			currentPage == 1 ? (currentPage = 1) : currentPage--;
@@ -12,7 +15,7 @@ app.controller("ticketViewerController", [
 		};
 
 		$scope.getNextPage = function() {
-			$scope.hasNextPage === true ? currentPage : currentPage++;
+			$scope.hasNextPage === false ? currentPage : currentPage++;
 			getTicketPage($scope, $http, currentPage);
 		};
 
@@ -24,11 +27,17 @@ app.controller("ticketViewerController", [
 		$scope.closeTicket = function() {
 			$scope.fetchedTicket = {};
 		};
+
+		$scope.refreshResults = function() {
+			getTicketPage($scope, $http, currentPage);
+		};
 	}
 ]);
 
 function getTicketInfo($scope, $http, ticketId) {
+	$scope.ticketViewError = false;
 	$scope.ticketData = true;
+
 	$http({
 		url: window.location.href + "ticket/",
 		method: "GET",
@@ -37,12 +46,24 @@ function getTicketInfo($scope, $http, ticketId) {
 		.then(
 			function(response) {
 				$scope.fetchedTicket = JSON.parse(response.data).ticket;
-				console.log($scope.fetchedTicket);
+				//console.log($scope.fetchedTicket);
 			},
 			function(error) {
-				console.log("Something is wrong.");
+				//console.log(error);
+				$scope.ticketViewError = true;
+				$scope.errorMessage = {
+					message: "Could not retrieve ticket :(",
+					prompt: "Please try again later"
+				};
 			}
 		)
+		.catch(function(error) {
+			$scope.ticketViewError = true;
+			$scope.errorMessage = {
+				message: "The application has ran into an error :(",
+				prompt: "Please contact your system administration."
+			};
+		})
 		.finally(function() {
 			$scope.ticketData = false;
 		});
@@ -50,10 +71,16 @@ function getTicketInfo($scope, $http, ticketId) {
 
 function getTicketPage($scope, $http, pageNumber) {
 	$scope.listData = true;
+	$scope.ticketListError = false;
 	$http({
 		url: window.location.href + "tickets",
 		method: "GET",
-		params: { page: pageNumber, per_page: 25 }
+		params: {
+			page: pageNumber,
+			per_page: 25,
+			sort_order: $scope.sortOrder,
+			sort_by: $scope.sortBy
+		}
 	})
 		.then(
 			function(response) {
@@ -63,13 +90,27 @@ function getTicketPage($scope, $http, pageNumber) {
 
 				response.data.next_page === null
 					? ($scope.hasNextPage = false)
-					: ($scope.hasNotNextPage = true);
+					: ($scope.hasNextPage = true);
+
+				//console.log(response.data.tickets);
 				$scope.tickets = response.data.tickets;
 			},
 			function(error) {
-				console.log("Something is wrong.");
+				//console.log(error);
+				$scope.ticketListError = true;
+				$scope.errorMessage = {
+					message: "The server is not responding :(",
+					prompt: "Please try again later."
+				};
 			}
 		)
+		.catch(function(error) {
+			$scope.ticketListError = true;
+			$scope.errorMessage = {
+				message: "The application has ran into an error :(",
+				prompt: "Please contact your system administration."
+			};
+		})
 		.finally(function() {
 			$scope.listData = false;
 		});

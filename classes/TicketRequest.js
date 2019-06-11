@@ -6,12 +6,13 @@ const Joi = require("joi");
 
 class TicketRequest {
 	async requestTickets(url) {
+		//console.log(Z_PASSWORD);
 		return await request.get(url).auth(Z_USERNAME, Z_PASSWORD, false);
 	}
 
 	async requestTicketsPerPage(url, queryParams) {
 		let urlWithQuery = url + "?" + this.buildQueryString(queryParams);
-		console.log("URL with queries: " + urlWithQuery);
+		//console.log("URL with queries: " + urlWithQuery);
 		return await this.requestTickets(urlWithQuery);
 	}
 
@@ -48,7 +49,20 @@ class TicketRequest {
 				.min(1)
 				.max(25)
 				.required(),
-			sort_by: Joi.string().valid(["created_at", "none"]),
+			sort_by: Joi.string().valid([
+				"created_at",
+				"updated_at",
+				"assignee",
+				"assignee.name",
+				"group",
+				"id",
+				"locale",
+				"requester",
+				"requester.name",
+				"status",
+				"subject",
+				"none"
+			]),
 			sort_order: Joi.string().valid(["asc", "desc", "none"])
 		};
 

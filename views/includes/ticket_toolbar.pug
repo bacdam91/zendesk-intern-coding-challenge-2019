@@ -1,0 +1,26 @@
+.ticket-toolbar
+    .ticket-panels-container
+        .ticket-panel
+            .ticket-panel__header
+                h4 TICKET DETAILS
+            .ticket-panel__body
+                .ticket-panel-field 
+                    strong ID: 
+                    span#ticket-id {{fetchedTicket.id}}
+                .ticket-panel-field 
+                    strong Status: 
+                    span.ticket-status(ng-class="{'ticket-status__new': fetchedTicket.status === 'new', 'ticket-status__open': fetchedTicket.status === 'open', 'ticket-status__pending': fetchedTicket.status === 'pending', 'ticket-status__hold': fetchedTicket.status === 'hold', 'ticket-status__solved': fetchedTicket.status === 'solved', 'ticket-status__closed': fetchedTicket.status === 'closed'}") 
+                    span {{fetchedTicket.status}}
+                .ticket-panel-field 
+                    strong Priority: 
+                    span#ticket-priority {{fetchedTicket.priority | customFilter}}
+                .ticket-panel-field 
+                    strong Type: 
+                    span#ticket-type {{fetchedTicket.type | customFilter}}
+        .ticket-panel
+            .ticket-panel__header
+                h4 TAGS
+            ul.ticket-panel__body.tag-container
+                li.tag-item(ng-repeat="tag in fetchedTicket.tags") {{tag}}
+    .ticket-btn-container 
+        button.close-ticket-btn(ng-click="closeTicket()") Close Ticket

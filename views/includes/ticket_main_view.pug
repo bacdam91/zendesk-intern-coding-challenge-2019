@@ -1,0 +1,19 @@
+.ticket-main-view
+    .ticket-main__header.ticket-main-container
+        div.wrapper 
+            h2.ticket-main__subject Subject: 
+                span#ticket-subject {{fetchedTicket.subject}}
+            .ticket-main__requester Requested by: 
+                span#ticket-requester {{fetchedTicket.requester_id}} 
+            .ticket-main__created-at 
+                em#ticket-created-at Created at: 
+                    span {{fetchedTicket.created_at | date : "dd/MM/yy hh:mm a"}}
+    .ticket-main__body.ticket-main-container
+        div.wrapper
+            .ticket-description-container 
+                .ticket-description 
+                    p#ticket-description {{fetchedTicket.description}} 
+                .ticket-updated-at
+                    em 
+                        span Updated at: 
+                        span#ticket-updated-at {{fetchedTicket.updated_at | date : "dd/MM/yy hh:mm a"}}

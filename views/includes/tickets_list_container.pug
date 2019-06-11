@@ -1,0 +1,9 @@
+.tickets-list-container
+    .error-message-container(ng-if="ticketListError")
+        p.message {{errorMessage.message}}
+        p.prompt {{errorMessage.prompt}}
+    .loading-spinner-container(ng-if="listData")
+        .spinner
+    include filter_container.pug
+    include tickets_list.pug
+    

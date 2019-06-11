@@ -1,0 +1,9 @@
+.ticket-viewer-container
+    .error-message-container(ng-if="ticketViewError")
+            p.message {{errorMessage.message}}
+            p.prompt {{errorMessage.prompt}}
+    .loading-spinner-container(ng-if="ticketData")
+        .spinner
+    .ticket-viewer(ng-model="fetchedTicket")
+        include ticket_toolbar.pug
+        include ticket_main_view.pug

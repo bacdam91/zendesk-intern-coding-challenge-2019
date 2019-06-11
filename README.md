@@ -14,7 +14,7 @@
 3. Run command `npm install` to install all dependencies
 4. Run the following commands to set the environment variables (username and password) to access the zendesk account for this project
     - `export ZENDESK_USERNAME=bacdam91@hotmail.com`
-    - `export ZENDESK_PASSWORD=!@#HelloWorld123`
+    - `export ZENDESK_PASSWORD=HelloWorld123`
 5. Run the server with `node index` command
 6. Open your internet browser and go to:
     - localhost:3000 (For local machine)

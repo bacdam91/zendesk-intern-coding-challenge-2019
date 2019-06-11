@@ -1,0 +1,16 @@
+.filter-container 
+    .btn-container 
+        button.page-toggle-btn.btn-nav__prev(ng-click="getPrevPage()", ng-disabled="!hasPrevPage", ng-class="{'inactive-btn': !hasPrevPage}") Prev
+        button.page-toggle-btn.btn-nav__next(ng-click="getNextPage()", ng-disabled="!hasNextPage", ng-class="{'inactive-btn': !hasNextPage}") Next
+    .filters 
+        div
+            label Sort by
+            select(ng-model="sortBy") 
+                each val, index in sortOptions
+                    option(value=index)= val
+        div 
+            label Sort order
+            select(ng-model="sortOrder")
+                option(value="desc", selected="selected") Descending
+                option(value="asc") Ascending
+        button#refresh-results-btn(ng-click="refreshResults()") Refresh

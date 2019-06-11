@@ -1,9 +1,12 @@
 require("express-async-errors");
-const winston = require("winston");
+
 const express = require("express");
-const PORT = process.env.PORT || 3000;
 const app = express();
+
+const PORT = process.env.PORT || 3000;
+
 const path = require("path");
+const winston = require("winston");
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -27,7 +30,6 @@ winston.add(winston.transports.File, {
 });
 
 app.set("view engine", "pug");
-
 require("./startup/routes")(app);
 
 app.listen(PORT, err => {
