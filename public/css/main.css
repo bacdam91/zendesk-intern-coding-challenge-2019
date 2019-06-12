@@ -433,6 +433,7 @@ button.close-ticket-btn {
 
 .ticket-status__new::after,
 .ticket-status__open::after,
+.ticket-status__pending::after,
 .ticket-status__hold::after,
 .ticket-status__solved::after,
 .ticket-status__closed::after {
@@ -459,6 +460,11 @@ button.close-ticket-btn {
 .ticket-status__open::after {
 	content: "O";
 	background-color: rgb(230, 77, 77);
+}
+
+.ticket-status__pending::after {
+	content: "P";
+	background-color: rgb(223, 78, 162);
 }
 
 .ticket-status__hold::after {

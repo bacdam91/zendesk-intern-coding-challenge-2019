@@ -13,9 +13,11 @@ route.get("/tickets", async (req, res) => {
 	if (error) {
 		throw error;
 	}
+
 	let tickets = JSON.parse(
 		await ticketRequest.requestTicketsPerPage(URL, queryParams)
 	);
+
 	res.send(tickets);
 });
 
