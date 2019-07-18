@@ -44,6 +44,8 @@ route.get("/ticket/", async (req, res) => {
 		TICKET_URL,
 		ticketId
 	);
+
+	console.log(ticket);
 	//console.log(ticket);
 	res.header("Content-Type", "application/json").send(JSON.stringify(ticket));
 });

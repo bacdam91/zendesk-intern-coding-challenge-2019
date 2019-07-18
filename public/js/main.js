@@ -9,6 +9,7 @@ app.controller("ticketViewerController", [
 		$scope.sortOrder = "desc";
 
 		getTicketPage($scope, $http, currentPage);
+
 		$scope.getPrevPage = function() {
 			currentPage == 1 ? (currentPage = 1) : currentPage--;
 			getTicketPage($scope, $http, currentPage);
